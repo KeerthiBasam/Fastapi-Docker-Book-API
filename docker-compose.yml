@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:15
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: bookdb
+    ports:
+      - "5432:5432"
+
+  api:
+    build:
+      context: .
+    container_name: fastapi_app
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/bookdb
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

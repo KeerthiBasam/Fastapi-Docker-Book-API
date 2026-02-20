@@ -1,0 +1,13 @@
+myenv/
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.vscode/
+.idea/
+*.log
+*.db
+postgres_data/
